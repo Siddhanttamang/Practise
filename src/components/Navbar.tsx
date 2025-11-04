@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
-import "../index.css";
+import "../styles/index.css";
 
 const Navbar = () => {
   const auth = useContext(AuthContext);
-  if (!auth) return null; // safety check
+  if (!auth) return null;
 
   return (
     <nav className='nav-bar'>
@@ -17,11 +17,7 @@ const Navbar = () => {
         <Link to="/about" className="nav-link">About</Link>
       </div>
 
-      {!auth.isLoggedIn ? (
-        <div className="navbar-login">
-          <button><Link to="/login">Login</Link></button>
-        </div>
-      ) : (
+      {auth.isLoggedIn && (
         <div className="navbar-login">
           <button onClick={auth.logout}>Logout</button>
         </div>

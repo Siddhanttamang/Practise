@@ -1,8 +1,20 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { User } from "../services/auth";
+interface AuthContextType{
+    user:User |null;
+    token:string |null;
+    isLoggedIn:boolean; 
+    login:(userData:User,tokenData:string)=>void;
+    logout:()=>void;
+    
+}
+interface AuthProviderProps{
+    children:ReactNode;
+}
 
-export const AuthContext = createContext<any>(null);
+export const AuthContext = createContext<AuthContextType |null >(null);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<any>(null);
   const [token, setToken] = useState<string | null>(null);
 

@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, LoginRequest } from '../services/auth';
 import { AuthContext } from '../contexts/AuthContext';
+import '../styles/login.css'
+
+
 
 const Login: React.FC = () => {
   const auth = useContext(AuthContext);
@@ -20,8 +23,11 @@ const Login: React.FC = () => {
     try {
       const request: LoginRequest = { email, password };
       const data = await loginUser(request);
-      auth?.login(data.access_token, data.user);
-      navigate("/");
+      if(data.user){
+        auth?.login(data.user, data.access_token);
+        navigate("/");
+
+      }
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -31,27 +37,27 @@ const Login: React.FC = () => {
 
   return (
     <div className='login-container'>
-      {error && <h1 className='error-box'>{error}</h1>}
+      <h1>Login to smartkrishi</h1>
       <form className='login-form' onSubmit={handleForm}>
+      {error && <p className='error-box'>Error</p>}
         Email: 
         <input 
           type="text" 
-          className='input_field' 
-          placeholder='Enter your email'
+          className='input-email' 
+          
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-        /><br/>
+        />
 
         Password: 
         <input 
           type="password" 
-          className='password_field' 
-          placeholder='Enter your password'
+          className='input-password' 
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        /><br/>
+        />
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" className='btn-submit' disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
       </form>
