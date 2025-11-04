@@ -1,25 +1,29 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Login from './pages/Login'
-import { loginUser,LoginRequest,LoginResponse,User } from './services/auth'
+
 import Home from './pages/Home';
-import {Route,Routes, Navigate } from 'react-router-dom';
+import {Route,Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import About from './pages/About';
 
 
 function App() {
-  // const userData=localStorage.getItem("user");
-  // const isLoggedIn=!!userData
+
 
   return (
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
-        {/* <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} /> */}
-        {/* <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} /> */}
-      </Routes>
- 
+    <div className='app'>
+    <Navbar/>
+    <main className="main-content">
+
+    <Routes>
+     <Route path='/' element={<Home/>}/>
+     <Route path='/about' element={<About/>}/>
+     <Route path='/login' element={<Login/>}/>
+    </Routes>
+    </main>
+    </div>
   );
 }
+
 
 export default App;

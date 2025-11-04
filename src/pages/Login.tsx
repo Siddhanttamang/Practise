@@ -1,36 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import { loginUser, LoginRequest } from '../services/auth';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Login: React.FC = () => {
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token,setToken]=useState<unknown>();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate= useNavigate();
-   
-   useEffect(()=>{
-    if(token){
-    navigate("/");
 
-   }
-
-   },[token]);
   const handleForm = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-
     try {
       const request: LoginRequest = { email, password };
       const data = await loginUser(request);
-      setToken(localStorage.getItem(data.access_token));
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      console.log("Login Successful", data);
-
+      auth?.login(data.access_token, data.user);
+      navigate("/");
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -50,6 +41,7 @@ const Login: React.FC = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         /><br/>
+
         Password: 
         <input 
           type="password" 
@@ -58,6 +50,7 @@ const Login: React.FC = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         /><br/>
+
         <button type="submit" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>

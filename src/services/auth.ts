@@ -15,7 +15,7 @@ export interface LoginResponse{
 export const loginUser = async(payload:LoginRequest):Promise<LoginResponse>=>{
     const response= await fetch("http://localhost:5000/api/auth/login",{
         method:"POST",
-        headers:{"Content-Type":"Application/json"},
+        headers:{"Content-Type":"application/json"},
         body: JSON.stringify(payload)
     })
         if (!response.ok) {
