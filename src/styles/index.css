@@ -18,14 +18,15 @@ h1, h2, h3 {
 
 .nav-bar{
   display: flex;
-  position: sticky;
-  width: 100%;
+  position: fixed;
+  right: 0;
+  left: 0;
   top: 0;
   z-index: 1000;
   flex-direction: row;
   padding: 27px 68px;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.62);
+  background-color: rgba(0, 0, 0, 0.42);
   
 }
 .nav-link{
@@ -54,7 +55,7 @@ h1, h2, h3 {
   color: white;
 }
 .login-button{
-  background-color: #67B26F;
+  background-color: #52c85d;
   color: white;
 }
 .logout-button{

@@ -5,20 +5,25 @@
 }
 
 .slider-container {
-  display: flex;
-  height: 400px;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-evenly;
+  width: 100%;
+  height: 480px;
   overflow: hidden;
+  position: relative;
 }
 
-
+.slider-container::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.286);
+  position: absolute;
+  z-index: 1;
+}
 .slide {
-  height: 320px;
-  width: 420px;
-  border-radius: 30%;
-  position: relative;
+  height: 480px;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -31,6 +36,7 @@
   position: relative;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  z-index: 2;
 }
 .slide-text ,.text-wrapper p{
   color: white;  font-weight: bold;
@@ -46,14 +52,31 @@
   /* background-image: linear-gradient(to right, #093196, #b94d8e); */
 
 .about-section {
-  background-color: white;       
+  background-color: white;  
+    
   padding: 60px 20px;            
   text-align: center;    
   color: black;               
 }
+.about-box{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-evenly; 
 
+}
+.about{
+  border: 1px solid rgb(155, 155, 155);
+  border-radius: 8px;
+  height: 180px;
+  width: 50%;
+  padding: 8px;
+  border-left: 4px solid #1e5eff;
+  border-right: 4px solid #1e5eff;
 
-.about-section h1{
+}
+
+.about-section h1,.about h3{
   font-weight: bold;
   background: linear-gradient(to right, #1e5eff, #fd0c9d);
   background-clip: text;           
@@ -92,6 +115,7 @@
   flex-direction: column;
   gap: 8px;
   justify-content: space-evenly;
+  align-items: center;
   border: 1px solid rgb(155, 155, 155);
   border-radius: 12px;
   height: 160px;
@@ -100,6 +124,41 @@
   padding: 8px;
   
 }
-.service h3{
-  text-decoration: underline;
+.footer-section {
+  background-color: #0a2e1f;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.footer-about,
+.footer-contact{
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-about h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.footer-contact p, .footer-about p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+
+.footer-bottom {
+  margin-top: 30px;
+  border-top: 1px solid #2f4f4f;
+  padding-top: 10px;
+  font-size: 13px;
+  color: #cfcfcf;
 }

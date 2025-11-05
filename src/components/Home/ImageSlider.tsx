@@ -40,10 +40,10 @@ const ImageSlider: React.FC = () => {
 
         }}
       >
-      </div>
       <div className='text-wrapper'>
         <h1 className="slide-text">Welcome to Smart Krishi</h1>
         <p>Lorem ipsum dolor sit amet consectetur</p>
+      </div>
       </div>
     </div>
   );

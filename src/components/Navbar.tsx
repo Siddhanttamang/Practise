@@ -14,20 +14,16 @@ const Navbar = () => {
         <Link to="/" className='nav-link'>Smart Krishi</Link> 
       </div>
       <div className="navbar-links">
-        <Link to="/" className="nav-link">Pricing</Link>
+        <Link to="/pricing" className="nav-link">Pricing</Link>
         <Link to="/features" className="nav-link">Features</Link>
       </div>
 
-      {!auth.isLoggedIn ?(<div className="navbar-button">
+      <div className="navbar-button">
         <button className='signup-button'>Sign Up</button>
         <Link to="/login" className='nav-link'>
         <button className='login-button'>Login</button></Link>
       </div>
-      ): (
-        <div className="navbar-logout">
-          <button className="logout-button"onClick={auth.logout}>Logout</button>
-        </div>
-      )}
+    
     </nav>
   );
 };
