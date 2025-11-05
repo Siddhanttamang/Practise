@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: linear-gradient(to right, #00b09b, #2c7744);;
+    background-image: linear-gradient(to right, #093196, #b94d8e);
 
 }
 .login-form{
@@ -23,7 +23,7 @@
     color: white;
     padding: 5px;
     background-color: transparent;
-    border: 1px solid rgb(73, 77, 72);
+   border: 1px solid rgb(155, 155, 155);
     border-radius: 6px;
     font-size: 16px;
 }

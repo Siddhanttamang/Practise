@@ -1,44 +1,24 @@
-import React, { useContext } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import About from './pages/About';
-import Login from './pages/Login';
-import './styles/app.css';
-import ProtectedRoute from './utilities/ProtectedRoute';
-import { AuthContext } from './contexts/AuthContext';
+import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./components/Home/About";
+import Login from "./pages/Login";
 
 function App() {
-  const auth = useContext(AuthContext);
-  if (!auth) return null;
+  const location = useLocation();
+  const hideNavbar = location.pathname === "/login";
 
   return (
-    <div className='app'>
-      {auth.isLoggedIn && <Navbar />}
+    <div className="app">
+      {!hideNavbar && <Navbar />}
       <main className="main-content">
-        <Routes>
-          <Route
-            path="/login"
-            element={!auth.isLoggedIn ? <Login /> : <Navigate to="/" replace />}
-          />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <ProtectedRoute>
-                <About />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pricing" element={<About />} />
+        <Route path="/features" element={<About />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
       </main>
     </div>
   );

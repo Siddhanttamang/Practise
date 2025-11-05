@@ -39,7 +39,7 @@ const Login: React.FC = () => {
     <div className='login-container'>
       <h1>Login to smartkrishi</h1>
       <form className='login-form' onSubmit={handleForm}>
-      {error && <p className='error-box'>Error</p>}
+      {error && <p className='error-box'>{error}</p>}
         Email: 
         <input 
           type="text" 

@@ -1,24 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to right, #00b09b, #2c7744);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Poppins', monospace;
 }
+h1, h2, h3 {
+  font-weight: 600; 
+}
+
 
 .nav-bar{
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   flex-direction: row;
-  padding: 20px 50px;
+  padding: 27px 68px;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.086);
+  background-color: rgba(0, 0, 0, 0.82);
   
 }
 .nav-link{
@@ -29,4 +35,28 @@ code {
   display: flex;
   flex-direction: row;
   gap: 50px;
+}
+.navbar-button{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+.login-button ,.logout-button, .signup-button{
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 3px;
+  /* padding: 4px 20px; */
+}
+.signup-button{
+  background-color: #2134c3;
+  color: white;
+}
+.login-button{
+  background-color: #67B26F;
+  color: white;
+}
+.logout-button{
+  background-color: #FF3333;
+  color: white;
 }
