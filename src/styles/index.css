@@ -4,6 +4,8 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to right, #1e5eff, #fd0c9d);
+ 
 }
 
 code {
@@ -16,15 +18,14 @@ h1, h2, h3 {
 
 .nav-bar{
   display: flex;
-  position: fixed;
+  position: sticky;
+  width: 100%;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1000;
   flex-direction: row;
   padding: 27px 68px;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.82);
+  background-color: rgba(0, 0, 0, 0.62);
   
 }
 .nav-link{
