@@ -5,11 +5,12 @@ import Home from "./pages/Home";
 import About from "./components/Home/About";
 import Login from "./pages/Login";
 import ProtectedRoute from "./utilities/ProtectedRoute";
-import Dashboard from "./pages/Dashboard";
+import MarketPlace from "./pages/MarketPlace";
+import Vegetables from "./pages/Vegetables";
 
 function App() {
   const location = useLocation();
-  const hideNavbar = location.pathname === "/login" || location.pathname==="/dashboard";
+  const hideNavbar = location.pathname === "/login";
 
   return (
     <div className="app">
@@ -20,12 +21,8 @@ function App() {
         <Route path="/pricing" element={<About />} />
         <Route path="/features" element={<About />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard/*" element={
-          <ProtectedRoute>
-          <Dashboard/>
-          </ProtectedRoute>
-          }>
-          </Route>
+        <Route path="/marketplace" element={<MarketPlace/>} />
+        <Route path="/vegetables" element={<Vegetables/>} />
         
       </Routes>
       </main>

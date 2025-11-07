@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser, LoginRequest } from '../services/auth';
 import { AuthContext } from '../contexts/AuthContext';
 import '../styles/login.css'
+import GoogleLoginButton from '../components/GoogleLoginButton';
 
 
 
@@ -60,8 +61,10 @@ const Login: React.FC = () => {
         <button type="submit" className='btn-submit' disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
+      <GoogleLoginButton/>
       </form>
     </div>
+
   );
 };
 

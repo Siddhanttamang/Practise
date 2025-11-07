@@ -24,7 +24,7 @@ h1, h2, h3 {
   top: 0;
   z-index: 1000;
   flex-direction: row;
-  padding: 27px 68px;
+  padding: 27px 48px;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.42);
   
@@ -38,11 +38,13 @@ h1, h2, h3 {
   flex-direction: row;
   gap: 50px;
 }
-.navbar-button{
+.navbar-profile{
   display: flex;
-  flex-direction: row;
-  gap: 12px;
+  flex-direction: row-reverse;
+  gap: 18px;
+
 }
+
 .login-button ,.logout-button, .signup-button{
   height: 30px;
   width: 100px;
