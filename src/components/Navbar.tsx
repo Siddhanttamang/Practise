@@ -6,9 +6,11 @@ import "../styles/app.css";
 import logo from '../assets/logo.png'
 import { GooglePayload } from './GoogleLoginButton';
 import Profile from './Profile';
+import Weather from './Weather';
 
 const Navbar = () => {
   const storedUser = localStorage.getItem("googleUser");
+  const city:string="birtamode";
   const [user, setUser] = useState<GooglePayload | null>(storedUser ? (JSON.parse(storedUser) as GooglePayload) : null);
    useEffect(() => {
     if (user) {
@@ -24,6 +26,12 @@ const Navbar = () => {
           alt="Smart Krishi Logo"
           className="logo"
         /></Link> 
+      </div>
+      <div>
+        {
+
+        <Weather city={city}/>
+        }
       </div>
       <div className="navbar-links">
         <Link to="/marketplace" className="nav-link">Market Place</Link>
