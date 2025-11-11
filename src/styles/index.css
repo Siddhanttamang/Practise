@@ -4,7 +4,7 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0b2309; 
+  background-color: whitesmoke 
  
 }
 
@@ -17,25 +17,22 @@ h1, h2, h3 {
 
 
 .nav-bar{
+  position: sticky;
+  top: 0;
+  background-color: white;
   display: flex;
   flex-direction: row;
   padding: 27px 48px;
   justify-content: space-between;
-}
-.nav-bar.active{
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.575);
- 
+  z-index: 100;
 }
   
 
 .nav-link{
   text-decoration: none;
-  color: White;
+  font-size: 14px;
+  
+  color: black;
   
 }
 .navbar-links{
@@ -43,9 +40,8 @@ h1, h2, h3 {
   align-items: center;
   flex-direction: row;
   border-radius: 14px;
-  padding: 0px 20px;
   justify-content:space-around;
-  gap: 50px;
+  gap: 40px;
 }
 .navbar-profile{
   display: flex;
@@ -74,5 +70,5 @@ h1, h2, h3 {
   color: white;
 }
 .weather-section{
-  color: white;
+  color: black;
 }

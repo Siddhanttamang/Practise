@@ -1,7 +1,7 @@
 .about-section {
-  background-color: #0b2309;  
+  background-color: whitesmoke;  
   padding: 60px 32px;              
-  color: rgb(255, 255, 255);               
+  color:black;               
 }
 .about-us{
   display: flex;

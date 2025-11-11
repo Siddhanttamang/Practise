@@ -15,8 +15,13 @@ const ImageSlider: React.FC = () => {
         }}
       >
       <div className='text-wrapper'>
-        <h1 className="slide-text">Welcome to Smart Krishi</h1>
-        <p>Lorem ipsum dolor sit amet consectetur</p>
+        <h1 className="slide-text">Empowering farmers with AI-driven</h1>
+        <h2 className='slide-text'> pest detection, real-time weather updates, and a direct marketplace</h2>
+        <p style={{fontSize:10}}>To bridge the gap between technology and agriculture by helping farmers make data-driven decisions, reduce losses, and improve productivity sustainably.</p>
+        <div className='slide-buttons'>
+          <button className='slide-button'style={{backgroundColor:'green'}}>Learn More</button>
+          <button className='slide-button 'style={{backgroundColor:'gray'}}>Contact Us</button>  
+        </div>
       </div>
       </div>
     </div>
