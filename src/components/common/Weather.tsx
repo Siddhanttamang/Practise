@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../contexts/AuthContext';
-import { fetchWeather, WeatherRequest, WeatherResponse } from '../services/auth';
+import { AuthContext } from '../../contexts/AuthContext';
+import { fetchWeather, WeatherRequest, WeatherResponse } from '../../services/auth';
 interface WeatherProps{
     city:string ;
 }
 const Weather:React.FC<WeatherProps> = ({city}) => {
-    const auth =useContext(AuthContext);
     const[error,setError]=useState("")
     const[weatherData,setWeatherData]=useState<WeatherResponse | null>(null);
     useEffect(()=>{

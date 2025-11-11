@@ -26,7 +26,7 @@ const Login: React.FC = () => {
       const data = await loginUser(request);
       if(data.user){
         auth?.login(data.user, data.access_token);
-        navigate("/dashboard");
+        navigate("/");
 
       }
     } catch (err: any) {

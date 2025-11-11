@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { GooglePayload } from './GoogleLoginButton';
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-interface Props{
-  user:GooglePayload |null;
-  setUser:React.Dispatch<React.SetStateAction<GooglePayload | null>>
-}
-const Profile:React.FC<Props> = ({user,setUser}) => {
+import { AuthContext } from '../../contexts/AuthContext';
+
+const Profile:React.FC = () => {
+  const auth=useContext(AuthContext);
+  const user=(auth?.user)?(auth.user.name):(auth?.googleUser?.name);
       
   return (
     <>
@@ -18,17 +17,14 @@ const Profile:React.FC<Props> = ({user,setUser}) => {
     <div className="navbar-profile">
         <Link to="/cart" className='nav-cart'>🛒</Link>
         <div className='profile'><img
-        src={user.picture}
+        src={auth?.googleUser?.picture}
         alt="Profile"
         style={{ 
             borderRadius: '50%',
             width:32,
              }}
       /></div>
-        <button className='logout-button' onClick={()=>{
-          localStorage.removeItem("googleUser");
-          setUser(null);
-        }} >Logout</button>
+        <button className='logout-button' onClick={auth?.logout}>Logout</button>
   
       </div>)
     }

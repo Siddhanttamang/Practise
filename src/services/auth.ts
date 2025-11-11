@@ -3,6 +3,8 @@ export interface User{
     email:string;
     name:string;
     role:string;
+    address:string;
+    contact:string;
 }
 export interface LoginRequest{
     email:string;
@@ -36,7 +38,7 @@ export const loginUser = async(payload:LoginRequest):Promise<LoginResponse>=>{
 }
 export const fetchWeather= async(weatherRequest:WeatherRequest):Promise<WeatherResponse>=>{
        
-        const response= await fetch(`http://localhost:5000/api/weather?${weatherRequest.city}`)
+        const response= await fetch(`http://localhost:5000/api/weather?city=${weatherRequest.city}`)
         if(!response.ok){
             const errorData= await response.json();
             throw new Error(errorData.message || "Failed to fetch weather")  
@@ -46,3 +48,33 @@ export const fetchWeather= async(weatherRequest:WeatherRequest):Promise<WeatherR
     
 
 }
+// Create PublicUser type that hides password. (Hint: Omit)
+
+// Create UserUpdate type that allows partial updates. (Hint: Partial)
+
+// Create a UserCredentials type for login. (Hint: Pick)
+
+// Create a RoleAccess object using Record<"admin" | "user", string[]> to list allowed pages for each role.
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+//   password: string;
+//   role: "admin" | "user";
+// }
+// type PublicUser= Omit<User,"password">
+// const UserUpdate=(id:User["id"],updates:Partial<User>)=>{
+
+// }
+// type UserCredentials=Pick<User,"email"|"password">
+// type Role="admin" |"user"
+// interface Access{
+//     canEdit:boolean;
+//     canDelete:boolean;
+//     canView:boolean;
+
+// }
+// const RoleAccess:Record<Role,Access>={
+//     admin:{canDelete:true,canEdit:true,canView:true},
+//     user:{canDelete:false,canEdit:false,canView:true}
+// }

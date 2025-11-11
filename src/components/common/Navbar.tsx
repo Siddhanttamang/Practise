@@ -1,24 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../contexts/AuthContext';
-import "../styles/index.css";
-import "../styles/app.css";
-import logo from '../assets/logo.png'
-import { GooglePayload } from './GoogleLoginButton';
+import { Link, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+import "../../styles/index.css";
+import "../../styles/app.css";
+import logo from '../../assets/logo.png'
+import { GooglePayload } from '../GoogleLoginButton';
 import Profile from './Profile';
 import Weather from './Weather';
 
 const Navbar = () => {
-  const storedUser = localStorage.getItem("googleUser");
-  const city:string="birtamode";
-  const [user, setUser] = useState<GooglePayload | null>(storedUser ? (JSON.parse(storedUser) as GooglePayload) : null);
-   useEffect(() => {
-    if (user) {
-      localStorage.setItem("googleUser", JSON.stringify(user));
-    }
-  }, [user]);
+  const auth=useContext(AuthContext);
+  const location= useLocation();
+  const home= location.pathname==="/";
+  const city=(auth?.user)?(auth?.user?.address):"Kathmandu";
+
   return (
-    <nav className='nav-bar'>
+    <nav className={`nav-bar ${home &&'active'}`}>
       <div className="nav-brand">
         <Link to="/" className='nav-link'>
         <img
@@ -38,7 +35,7 @@ const Navbar = () => {
         <Link to="/vegetables" className="nav-link">Vegetables Prices</Link>
       </div>
       <div>
-     <Profile user={user} setUser={setUser}/>
+     <Profile/>
       </div>
 
     

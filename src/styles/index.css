@@ -4,7 +4,7 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to right, #1e5eff, #fd0c9d);
+  background-color: #0b2309; 
  
 }
 
@@ -18,24 +18,33 @@ h1, h2, h3 {
 
 .nav-bar{
   display: flex;
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  z-index: 1000;
   flex-direction: row;
   padding: 27px 48px;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.42);
-  
 }
+.nav-bar.active{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.575);
+ 
+}
+  
+
 .nav-link{
   text-decoration: none;
   color: White;
+  
 }
 .navbar-links{
   display: flex;
+  align-items: center;
   flex-direction: row;
+  border-radius: 14px;
+  padding: 0px 20px;
+  justify-content:space-around;
   gap: 50px;
 }
 .navbar-profile{
