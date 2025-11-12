@@ -4,18 +4,15 @@ import { AuthContext } from '../../contexts/AuthContext';
 import "../../styles/index.css";
 import "../../styles/app.css";
 import logo from '../../assets/logo.png'
-import { GooglePayload } from '../GoogleLoginButton';
 import Profile from './Profile';
 import Weather from './Weather';
 
 const Navbar = () => {
   const auth=useContext(AuthContext);
-  const location= useLocation();
-  const home= location.pathname==="/";
   const city=(auth?.user)?(auth?.user?.address):"Kathmandu";
 
   return (
-    <nav className={`nav-bar ${home &&'active'}`}>
+    <nav className='nav-bar' >
       <div className="nav-brand">
         <Link to="/" className='nav-link'>
         <img

@@ -5,7 +5,7 @@ interface WeatherProps{
     city:string ;
 }
 const Weather:React.FC<WeatherProps> = ({city}) => {
-    const[error,setError]=useState("")
+    const[error,setError]=useState("err")
     const[weatherData,setWeatherData]=useState<WeatherResponse | null>(null);
     useEffect(()=>{
     const fetchWeatherData=async ()=>{
@@ -14,6 +14,7 @@ const Weather:React.FC<WeatherProps> = ({city}) => {
                 const data= await fetchWeather(request);
                 if(data.temperature){
                     setWeatherData(data);
+                    setError("");
                 }
             }catch(err:any){
                 setError(err.message);
@@ -26,7 +27,7 @@ const Weather:React.FC<WeatherProps> = ({city}) => {
   return (
     <div className='weather-section'>
         {!error &&
-            <span >{weatherData?.temperature} °C</span>
+            <span >{weatherData?.temperature +"°C"}</span>
         }
       
     </div>

@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 const Profile:React.FC = () => {
   const auth=useContext(AuthContext);
   const user=(auth?.user)?(auth.user.name):(auth?.googleUser?.name);
+  
       
   return (
     <>
@@ -16,6 +17,7 @@ const Profile:React.FC = () => {
           </div>):(
     <div className="navbar-profile">
         <Link to="/cart" className='nav-cart'>🛒</Link>
+        
         <div className='profile'><img
         src={auth?.googleUser?.picture}
         alt="Profile"
@@ -25,6 +27,7 @@ const Profile:React.FC = () => {
              }}
       /></div>
         <button className='logout-button' onClick={auth?.logout}>Logout</button>
+
   
       </div>)
     }

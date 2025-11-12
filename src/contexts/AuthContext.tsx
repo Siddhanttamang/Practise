@@ -1,6 +1,7 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useState, useEffect, ReactNode, useContext } from "react";
 import { User } from "../services/auth";
 import { GooglePayload } from "../components/GoogleLoginButton";
+import { useToast } from "./ToastContext";
 interface AuthContextType{
     user:User |null;
     googleUser:GooglePayload |null;
@@ -18,6 +19,7 @@ interface AuthProviderProps{
 export const AuthContext = createContext<AuthContextType |null >(null);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const toast=useToast();
   const [user, setUser] = useState<User |null >(null);
   const [googleUser,setGoogleUser]=useState<GooglePayload |null>(null);
   const [token, setToken] = useState<string | null>(null);
@@ -37,11 +39,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = (userData: any, tokenData: string) => {
     localStorage.setItem("token", tokenData);
     localStorage.setItem("user", JSON.stringify(userData));
+    toast.success("Login Successfull");
     setUser(userData);
     setToken(tokenData);
   };
   const googleLogin=(googleData:GooglePayload)=>{
     localStorage.setItem("googleUser",JSON.stringify(googleData));
+    toast.success("Login Successfull");
     setGoogleUser(googleData);
   }
 
@@ -52,6 +56,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(null);
     setGoogleUser(null);
     setToken(null);
+    toast.info("Logging out..")
   };
 
   const isLoggedIn = !!token;

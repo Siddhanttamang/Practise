@@ -7,12 +7,14 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./utilities/ProtectedRoute";
 import MarketPlace from "./pages/MarketPlace";
 import Vegetables from "./pages/Vegetables";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const location = useLocation();
   const hideNavbar = location.pathname === "/login";
 
   return (
+    
     <div className="app">
       {!hideNavbar && <Navbar />}
       <main className="main-content">
