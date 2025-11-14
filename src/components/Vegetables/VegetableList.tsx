@@ -1,35 +1,35 @@
-import React from 'react'
-import { VegetableResponse } from '../../services/auth'
-interface Vegetables{
-    vegetables:VegetableResponse[] |null
+import React from 'react';
+import { Vegetable } from '../../services/auth';
+
+interface VegetableListProps {
+  vegetables: Vegetable[] | null;
 }
-const VegetableList:React.FC<Vegetables> = ({vegetables}) => {
-    console.log(vegetables);
+
+const VegetableList: React.FC<VegetableListProps> = ({ vegetables }) => {
   return (
-    <div>
-        <div style={{ padding: "20px" }}>
-      <h1>Vegetable Prices</h1>
-      <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}>
+    <div className="vegetable-container">
+      <h1 className="vegetable-title">Vegetable Prices</h1>
+
+      <table className="vegetable-table">
         <thead>
           <tr>
-            <th style={{ borderBottom: "1px solid #ddd", padding: "8px" }}>Name</th>
-            <th style={{ borderBottom: "1px solid #ddd", padding: "8px" }}>Quantity (kg)</th>
-            <th style={{ borderBottom: "1px solid #ddd", padding: "8px" }}>Price (Rs)</th>
+            <th>Name</th>
+            <th>Quantity (kg)</th>
+            <th>Price (Rs)</th>
           </tr>
         </thead>
         <tbody>
-          {vegetables &&(vegetables.map((veg) => (
+          {vegetables?.map((veg) => (
             <tr key={veg.id}>
-              <td style={{ borderBottom: "1px solid #ddd", padding: "8px" }}>{veg.name}</td>
-              <td style={{ borderBottom: "1px solid #ddd", padding: "8px" }}>{veg.price}</td>
+              <td>{veg.name}</td>
+              <td>1 / Kg</td>
+              <td>{veg.price}</td>
             </tr>
-          )))}
+          ))}
         </tbody>
       </table>
     </div>
-      
-    </div>
-  )
-}
+  );
+};
 
-export default VegetableList
+export default VegetableList;

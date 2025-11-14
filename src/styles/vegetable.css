@@ -1,0 +1,53 @@
+
+
+.vegetable-container {
+  padding: 20px;
+  width: 100%;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.vegetable-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.vegetable-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.vegetable-table th,
+.vegetable-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.vegetable-table th {
+  background-color: #3498db;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vegetable-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.vegetable-table tbody tr:hover {
+  background-color: #d0e7ff;
+  transition: background-color 0.3s ease;
+}
+
+.vegetable-table td {
+  color: #34495e;
+}

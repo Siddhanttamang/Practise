@@ -1,13 +1,18 @@
 import React from 'react'
 import { ProductResponse } from '../../services/auth';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps {
   product: ProductResponse;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const navigate=useNavigate();
+  const handleProduct=()=>{
+
+  }
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleProduct}>
       <img src={product.image_url} alt={product.name} className="product-image" />
       <div className="product-details">
         <h2 className="product-name">{product.name}</h2>

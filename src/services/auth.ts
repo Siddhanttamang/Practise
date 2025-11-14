@@ -35,14 +35,15 @@ export interface ProductResponse{
     user_contact: number;
 
 }
-interface Vegetable{
+export interface Vegetable{
     id:number;
     name:string;
     price:string;
     updated_at:string;
+    created_at:string;
 }
 export interface VegetableResponse{
-    vegetables:Vegetable;
+    data:Vegetable[];
     success:string
 
 }

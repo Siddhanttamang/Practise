@@ -5,7 +5,7 @@ import { ProductResponse } from "../../services/auth";
 import ProductCard from "./ProductCard";
 
 interface MarketPlaceContext {
-  productdata: ProductResponse[] | null; 
+  productdata: ProductResponse[] | null;
   isListed?:boolean;
 }
 
@@ -15,14 +15,7 @@ const Products: React.FC = () => {
     return <div>Loading products...</div>;
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-        gap: "20px",
-        padding: "20px",
-      }}
-    >
+    <div className="product-list">
       {productdata.map((product) => (
         <ProductCard key={product.name} product={product} />
       ))}

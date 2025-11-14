@@ -26,7 +26,7 @@ const MarketPlace = () => {
   return (
     <div className='market-place'>
         <nav className='nav-market'>
-        <Link to="products" className='nav-link'><h2>Products</h2></Link> 
+        <Link to="" className='nav-link'><h2>Products</h2></Link> 
         <Link to="cart" className='nav-link'><h2>Cart</h2></Link>
       </nav>
       <Outlet context={{ productdata }} />

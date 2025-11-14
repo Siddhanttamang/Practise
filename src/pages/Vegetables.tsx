@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { FetchVegetables, VegetableResponse } from "../services/auth";
 import VegetableList from "../components/Vegetables/VegetableList";
+import { Vegetable } from "../services/auth";
+import '../styles/vegetable.css'
 
 
 const Vegetables: React.FC = () => {
-  const [vegetables, setVegetables] = useState<VegetableResponse[] |null>(null);
+  const [vegetables, setVegetables] = useState<Vegetable[] |null>(null);
   const [error,setError]=useState<string>("");
 
   useEffect(() => {
     const fetchVegetableData=async ()=>{
               try{
-                  const data= await FetchVegetables();
-                  if(data){
-                      setVegetables(data);
+                  const res= await FetchVegetables();
+                  if(res){
+                      setVegetables(res.data);
                       setError("");
                   }
               }catch(err:any){
