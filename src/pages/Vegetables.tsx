@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { FetchVegetables, VegetableResponse } from "../services/auth";
+import VegetableList from "../components/Vegetables/VegetableList";
 
-const Vegetables = () => {
+
+const Vegetables: React.FC = () => {
+  const [vegetables, setVegetables] = useState<VegetableResponse[] |null>(null);
+  const [error,setError]=useState<string>("");
+
+  useEffect(() => {
+    const fetchVegetableData=async ()=>{
+              try{
+                  const data= await FetchVegetables();
+                  if(data){
+                      setVegetables(data);
+                      setError("");
+                  }
+              }catch(err:any){
+                  setError(err.message);
+              }
+          }
+          fetchVegetableData();
+  
+      },[]);
+
   return (
-    <div>
-      <h1>This is vegetable section</h1>
-    </div>
-  )
-}
+    <>
+    <VegetableList vegetables={vegetables}/>
+    </>
+  );
+};
 
-export default Vegetables
+export default Vegetables;

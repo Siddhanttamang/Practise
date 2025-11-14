@@ -16,8 +16,6 @@ const Profile:React.FC = () => {
             <button className='signup-button'>Sign Up</button>
           </div>):(
     <div className="navbar-profile">
-        <Link to="/cart" className='nav-cart'>🛒</Link>
-        
         <div className='profile'><img
         src={auth?.googleUser?.picture}
         alt="Profile"
@@ -27,7 +25,7 @@ const Profile:React.FC = () => {
              }}
       /></div>
         <button className='logout-button' onClick={auth?.logout}>Logout</button>
-
+       
   
       </div>)
     }

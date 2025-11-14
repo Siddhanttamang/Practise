@@ -1,7 +1,7 @@
-import React, { createContext, useState, useEffect, ReactNode, useContext } from "react";
+import React, { createContext, useState, useEffect, ReactNode} from "react";
 import { User } from "../services/auth";
 import { GooglePayload } from "../components/GoogleLoginButton";
-import { useToast } from "./ToastContext";
+import { useToast } from "../hooks/ToastContext";
 interface AuthContextType{
     user:User |null;
     googleUser:GooglePayload |null;
@@ -56,7 +56,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(null);
     setGoogleUser(null);
     setToken(null);
-    toast.info("Logging out..")
+    toast.info("You have been logged out.")
   };
 
   const isLoggedIn = !!token;

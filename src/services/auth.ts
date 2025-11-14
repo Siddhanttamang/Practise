@@ -1,3 +1,5 @@
+import Vegetables from "../pages/Vegetables";
+
 export interface User{
     id:number;
     email:string;
@@ -20,6 +22,28 @@ export interface WeatherRequest{
 export interface WeatherResponse{
     city:string;
     temperature:number;
+
+}
+export interface ProductResponse{
+    name: string;
+    quantity: number;
+    price: number;
+    image_url: string;
+    created_at: string;
+    user_name: string;
+    user_address: string;
+    user_contact: number;
+
+}
+interface Vegetable{
+    id:number;
+    name:string;
+    price:string;
+    updated_at:string;
+}
+export interface VegetableResponse{
+    vegetables:Vegetable;
+    success:string
 
 }
 export const loginUser = async(payload:LoginRequest):Promise<LoginResponse>=>{
@@ -47,6 +71,24 @@ export const fetchWeather= async(weatherRequest:WeatherRequest):Promise<WeatherR
         return data;
     
 
+}
+export const fetchProduct = async():Promise<ProductResponse>=>{
+    const response= await fetch('http://localhost:5000/api/vegetables');
+    if(!response.ok){
+        const errorData= await response.json();
+        throw new Error(errorData.message|| "failed to fetch weather")
+    }
+    const data: ProductResponse= await response.json();
+    return data;
+}
+export const FetchVegetables= async():Promise<VegetableResponse>=>{
+    const response= await fetch('http://localhost:5000/api/news');
+    if(!response.ok){
+        const errorData= await response.json();
+        throw new Error(errorData.message|| "failed to fetch weather")
+    }
+    const data: VegetableResponse= await response.json();
+    return data;
 }
 // Create PublicUser type that hides password. (Hint: Omit)
 

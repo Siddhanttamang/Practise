@@ -1,13 +1,12 @@
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/common/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
-import About from "./components/Home/About";
 import Login from "./pages/Login";
-import ProtectedRoute from "./utilities/ProtectedRoute";
 import MarketPlace from "./pages/MarketPlace";
 import Vegetables from "./pages/Vegetables";
-import { Toaster } from "react-hot-toast";
+import Cart from "./components/marketplace/Cart";
+import Products from "./components/marketplace/ProductList";
 
 function App() {
   const location = useLocation();
@@ -20,12 +19,13 @@ function App() {
       <main className="main-content">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/pricing" element={<About />} />
-        <Route path="/features" element={<About />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/marketplace" element={<MarketPlace/>} />
-        <Route path="/vegetables" element={<Vegetables/>} />
-        
+        <Route path="/vegetables/*" element={<Vegetables/>} />
+        <Route path="/marketplace/*" element={<MarketPlace/>}>
+        <Route index element={<Products />} />
+          <Route path="products" element={<Products />} />
+          <Route path="cart" element={<Cart />} />
+        </Route>
       </Routes>
       </main>
     </div>
