@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: whitesmoke 
+ 
+}
+
+code {
+  font-family: 'Poppins', monospace;
+}
+h1, h2, h3 {
+  font-weight: 600; 
+}
+
+
+.nav-bar{
+  position: sticky;
+  top: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 27px 48px;
+  justify-content: space-between;
+  z-index: 100;
+}
+  
+
+.nav-link{
+  text-decoration: none;
+  font-size: 14px;
+  
+  color: black;
+  
+}
+.navbar-links{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 14px;
+  justify-content:space-around;
+  gap: 40px;
+}
+.navbar-profile{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 18px;
+
+}
+
+.login-button ,.logout-button, .signup-button{
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 3px;
+  /* padding: 4px 20px; */
+}
+.signup-button{
+  background-color: #2134c3;
+  color: white;
+}
+.login-button{
+  background-color: #52c85d;
+  color: white;
+}
+.logout-button{
+  background-color: #FF3333;
+  color: white;
+}
+.weather-section{
+  color: black;
+}
