@@ -25,6 +25,7 @@ export interface WeatherResponse{
 
 }
 export interface ProductResponse{
+    filter: any;
     id:number;
     isAddedToCart:boolean;
     name: string;
@@ -75,13 +76,13 @@ export const fetchWeather= async(weatherRequest:WeatherRequest):Promise<WeatherR
     
 
 }
-export const fetchProduct = async():Promise<ProductResponse>=>{
+export const fetchProduct = async():Promise<ProductResponse[]>=>{
     const response= await fetch('http://localhost:5000/api/vegetables');
     if(!response.ok){
         const errorData= await response.json();
         throw new Error(errorData.message|| "failed to fetch weather")
     }
-    const data: ProductResponse= await response.json();
+    const data: ProductResponse[]= await response.json();
     return data;
 }
 export const FetchVegetables= async():Promise<VegetableResponse>=>{
