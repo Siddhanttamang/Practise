@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FetchVegetables, type VegetableResponse } from "../services/auth";
+import { fetchVegetables, type VegetableResponse } from "../services/api";
 import VegetableList from "../components/Vegetables/VegetableList";
-import { type Vegetable } from "../services/auth";
+import { type Vegetable } from "../services/api";
 import '../styles/vegetable.css'
 
 const Vegetables: React.FC = () => {
@@ -11,7 +11,7 @@ const Vegetables: React.FC = () => {
   useEffect(() => {
     const fetchVegetableData=async ()=>{
               try{
-                  const res= await FetchVegetables();
+                  const res= await fetchVegetables();
                   if(res){
                       setVegetables(res.data);
                       setError("");

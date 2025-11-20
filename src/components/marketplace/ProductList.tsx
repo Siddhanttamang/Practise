@@ -1,7 +1,7 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 
-import { type ProductResponse } from "../../services/auth";
+import { type ProductResponse } from "../../services/api";
 import ProductCard from "./ProductCard";
 import type { CartItem } from "../../pages/MarketPlace";
 
@@ -18,7 +18,7 @@ const Products: React.FC = () => {
     return <div>Loading products...</div>;
 
   return (
-    <div className="product-list">
+    <div className="product-list ">
       {productdata.map(product => {
         const cartItem = cartItems.find(ci => ci.id === product.id);
 

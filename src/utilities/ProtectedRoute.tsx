@@ -1,5 +1,5 @@
 
-import React, { JSX, useContext } from 'react';
+import React, { type JSX, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -11,7 +11,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const auth = useContext(AuthContext);
 
   if (!auth) return null; 
-  if (!auth.isLoggedIn) return <Navigate to="/" replace />; 
+  if (!auth.isLoggedIn) return <Navigate to="/login" replace />; 
   return children;
 };
 

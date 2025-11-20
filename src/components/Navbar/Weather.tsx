@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/AuthContext';
-import { fetchWeather, type WeatherRequest, type WeatherResponse } from '../../services/auth';
+import { fetchWeather, type WeatherRequest, type WeatherResponse } from '../../services/api';
 interface WeatherProps{
     city:string ;
 }

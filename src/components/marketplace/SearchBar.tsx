@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import type { ProductResponse } from '../../services/auth';
+import type { ProductResponse } from '../../services/api';
 
 interface SearchBarProps {
   allProducts: ProductResponse[] | null;

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { fetchProduct, type ProductResponse } from '../services/auth';
+import { fetchProduct, type ProductResponse } from '../services/api';
 import "../styles/marketplace.css";
 import CartButton from '../components/marketplace/CartButton';
 import SearchBar from '../components/marketplace/SearchBar';
+import { AuthContext } from '../contexts/AuthContext';
 
 export interface CartItem {
   id: number;
@@ -13,6 +14,7 @@ export interface CartItem {
 
 const MarketPlace: React.FC = () => {
   const [error, setError] = useState<string>('');
+  const auth= useContext(AuthContext);
   const [allProducts, setAllProducts] = useState<ProductResponse[] | null>(null);
   const [productdata, setProductData] = useState<ProductResponse[] | null>(null);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -53,7 +55,15 @@ const MarketPlace: React.FC = () => {
       <SearchBar allProducts={allProducts} setProductData={setProductData} />
 
       <nav className='nav-market'>
-        <Link to="/marketplace" className='nav-link'><h2>Products</h2></Link>
+        <div>
+
+        {(auth?.isLoggedIn) &&
+          <Link to="/marketplace/addVegetable" className='nav-link'>
+              <button className='login-button w-full p-2 pb-7 text-center'>Add Vegetables</button>
+          </Link>
+        }
+        </div>
+      
         <Link to="/marketplace/cart" className='nav-link'>
           <CartButton count={cartItems.length}/>
         </Link>

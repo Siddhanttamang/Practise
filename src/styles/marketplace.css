@@ -13,12 +13,12 @@
 .product-list{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   gap:10px;
   flex-wrap: wrap;
 }
 .product-card {
-  width: 24%;
+  width: 292px;
   border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;

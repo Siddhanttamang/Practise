@@ -1,6 +1,6 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
-import { type ProductResponse } from "../../services/auth";
+import { type ProductResponse } from "../../services/api";
 import ProductCard from "./ProductCard";
 import type { CartItem } from "../../pages/MarketPlace";
 import Checkout from "./Checkout";
@@ -34,7 +34,7 @@ const Cart: React.FC = () => {
 
   return (
     <div className=" flex flex-row justify-evenly">
-      <div className="product-list w-4/5 ">
+      <div className="product-list w-2/4 ">
         {selectedProducts.map(({ product, cartQuantity }) => (
           <ProductCard
             key={product.id}
@@ -45,9 +45,11 @@ const Cart: React.FC = () => {
           />
         ))}
       </div>
+      <div className="w-2/4">
       {selectedProducts.length > 0 && (
         <Checkout totalPrice={grandTotal} quantity={selectedProducts.reduce((sum, item) => sum + item.cartQuantity, 0)} />
       )}
+      </div>
     </div>
   );
 };

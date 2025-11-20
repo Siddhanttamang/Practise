@@ -9,6 +9,8 @@ import Cart from "./components/marketplace/Cart";
 import Products from "./components/marketplace/ProductList";
 import ProductDetails from "./components/marketplace/ProductDetails";
 import Checkout from "./components/marketplace/Checkout";
+import SellVegetable from "./components/marketplace/SellVegetable";
+import ProtectedRoute from "./utilities/ProtectedRoute";
 
 function App() {
   const location = useLocation();
@@ -27,6 +29,11 @@ function App() {
           <Route index element={<Products />} />
            <Route path="cart" element={<Cart />}/>
           <Route path="product/:id" element={<ProductDetails />} />
+          <Route path="addVegetable" element={
+            <ProtectedRoute>
+              <SellVegetable />
+            </ProtectedRoute>
+            } />
         </Route>
       </Routes>
       </main>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
-import { loginUser,type LoginRequest } from '../services/auth';
+import { loginUser,type LoginRequest } from '../services/api';
 import { AuthContext } from '../contexts/AuthContext';
 import '../styles/login.css'
 import GoogleLoginButton from '../components/GoogleLoginButton';

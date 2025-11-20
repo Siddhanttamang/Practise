@@ -1,12 +1,12 @@
 import React, { createContext, useState, useEffect,type ReactNode} from "react";
-import { type User } from "../services/auth";
+import { type User } from "../services/api";
 import { type GooglePayload } from "../components/GoogleLoginButton";
 import { useToast } from "../hooks/ToastContext";
 interface AuthContextType{
     user:User |null;
     googleUser:GooglePayload |null;
     token:string |null;
-    isLoggedIn:boolean; 
+    isLoggedIn:boolean ; 
     googleLogin:(googledata:GooglePayload)=>void;
     login:(userData:User,tokenData:string)=>void;
     logout:()=>void;

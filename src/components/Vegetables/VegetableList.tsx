@@ -1,5 +1,5 @@
 import React from 'react';
-import { type Vegetable } from '../../services/auth';
+import { type Vegetable } from '../../services/api';
 
 interface VegetableListProps {
   vegetables: Vegetable[] | null;
