@@ -33,24 +33,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const CartProduct = location.pathname.startsWith("/marketplace/cart");
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg w-96 sm:w-96">
+    <div className="bg-white border h-92 border-gray-200 rounded-xl shadow-md overflow-hidden transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg w-72 sm:w-72">
       <img
         src={product.image_url}
         alt={product.name}
-        className="w-full h-48 object-cover cursor-pointer"
+        className="w-full p-2 h-48 rounded-2xl object-cover cursor-pointer"
         onClick={handleProduct}
       />
 
       <div className="p-4">
+        
         <h2 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h2>
-
-        <div className="flex justify-between text-sm text-gray-600 mb-2">
-          <span>Quantity: {product.quantity} kg</span>
-          <span className="font-bold text-green-600">Rs. {product.price}</span>
-        </div>
-
-        <div className="text-xs text-gray-400 mb-3">Listed on: {product.created_at}</div>
-
+        <p className="text-xs text-gray-400 mb-3">Listed on: {product.created_at}</p>
+        <span className="font-bold text-green-600">Rs. {product.price}</span>
         <div className="flex items-center gap-2 mb-3">
           <span className="font-medium text-gray-700">Quantity</span>
           <button
@@ -61,7 +56,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </button>
           <input
             type="number"
-            className="w-12 text-center border border-gray-300 rounded"
+            className="w-full text-center border border-gray-300 rounded"
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value) || 1)}
           />
@@ -71,14 +66,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
           >
             +
           </button>
-        </div>
 
         {!CartProduct && (
           <AddToCart
-            isAddedToCart={isAddedToCart}
-            onAddToCart={() => onAddToCart(quantity)}
+          isAddedToCart={isAddedToCart}
+          onAddToCart={() => onAddToCart(quantity)}
           />
         )}
+        </div>
       </div>
     </div>
   );

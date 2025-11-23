@@ -6,10 +6,8 @@ interface AddToCartProps {
 }
 const AddToCart: React.FC<AddToCartProps> = ({ isAddedToCart, onAddToCart }) => {
   return (
-    <button className="contact-btn" onClick={onAddToCart}>
-
-      {(isAddedToCart ? "Added" : "Add to Cart")}<FaShoppingCart className=" pl-2 inline-block" size={24} />
-       
+    <button className={`px-4 py-2 rounded-xl bg-green-400 cursor-pointer font-bold text-white ${(isAddedToCart)?"bg-green-800":""}`} onClick={onAddToCart}>
+      <FaShoppingCart size={24} />
     </button>
   );
 };
