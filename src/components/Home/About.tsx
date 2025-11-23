@@ -1,6 +1,7 @@
 import React from "react";
-import AboutCard from "../About/AboutCard";
+
 import '../../styles/about.css'
+import AboutCard from "../About/AboutCard";
 const About = () => {
   return (
     <section className="about-section">

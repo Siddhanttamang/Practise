@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom';
-import { type ProductResponse } from '../../services/api';
+
 import axios from 'axios';
+import type { ProductResponse } from '../../services/api';
 import AddToCart from '../common/AddToCart';
+
 
 interface MarketPlaceContext {
   cartItems: { id: number; quantity: number }[];

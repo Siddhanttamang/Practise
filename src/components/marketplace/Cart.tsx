@@ -1,10 +1,10 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 import { type ProductResponse } from "../../services/api";
-import ProductCard from "./ProductCard";
-import type { CartItem } from "../../pages/MarketPlace";
-import Checkout from "./Checkout";
 
+import type { CartItem } from "../../pages/MarketPlace";
+import ProductCard from "./ProductCard";
+import Checkout from "./Checkout";
 interface MarketPlaceContext {
   productdata: ProductResponse[] | null;
   cartItems: CartItem[];
@@ -12,14 +12,16 @@ interface MarketPlaceContext {
 }
 
 const Cart: React.FC = () => {
-  const { productdata, cartItems, handleAddToCart } = useOutletContext<MarketPlaceContext>();
+  const { productdata, cartItems, handleAddToCart } =
+    useOutletContext<MarketPlaceContext>();
 
-  if (!productdata || productdata.length === 0) return <div>Loading products...</div>;
+  if (!productdata || productdata.length === 0)
+    return <div>Loading products...</div>;
 
   // Map cart items to their products and calculate total price per item
   const selectedProducts = cartItems
-    .map(ci => {
-      const product = productdata.find(p => p.id === ci.id);
+    .map((ci) => {
+      const product = productdata.find((p) => p.id === ci.id);
       if (!product) return null;
       return {
         product,
@@ -27,10 +29,17 @@ const Cart: React.FC = () => {
         totalPrice: ci.quantity * product.price,
       };
     })
-    .filter(Boolean) as { product: ProductResponse; cartQuantity: number; totalPrice: number }[];
+    .filter(Boolean) as {
+    product: ProductResponse;
+    cartQuantity: number;
+    totalPrice: number;
+  }[];
 
   // Calculate grand total for all products
-  const grandTotal = selectedProducts.reduce((sum, item) => sum + item.totalPrice, 0);
+  const grandTotal = selectedProducts.reduce(
+    (sum, item) => sum + item.totalPrice,
+    0
+  );
 
   return (
     <div className=" flex flex-row justify-evenly">
@@ -40,15 +49,28 @@ const Cart: React.FC = () => {
             key={product.id}
             product={product}
             isAddedToCart={true}
-            onAddToCart={(qty) => handleAddToCart(product.id, qty, product.price)}
+            onAddToCart={(qty) =>
+              handleAddToCart(product.id, qty, product.price)
+            }
             initialQuantity={cartQuantity}
           />
         ))}
       </div>
       <div className="w-2/4">
-      {selectedProducts.length > 0 && (
-        <Checkout totalPrice={grandTotal} quantity={selectedProducts.reduce((sum, item) => sum + item.cartQuantity, 0)} />
-      )}
+        {selectedProducts.length > 0 && (
+          <Checkout
+            totalPrice={grandTotal}
+            products={selectedProducts.map((item) => ({
+              id: item.product.id,
+              name: item.product.name,
+              quantity: item.cartQuantity,
+            }))}
+            quantity={selectedProducts.reduce(
+              (sum, item) => sum + item.cartQuantity,
+              0
+            )}
+          />
+        )}
       </div>
     </div>
   );

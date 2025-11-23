@@ -1,9 +1,11 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 
-import { type ProductResponse } from "../../services/api";
+
 import ProductCard from "./ProductCard";
+import type { ProductResponse } from "../../services/api";
 import type { CartItem } from "../../pages/MarketPlace";
+
 
 interface MarketPlaceContext {
   productdata: ProductResponse[] | null;

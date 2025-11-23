@@ -1,9 +1,11 @@
 import React from "react";
 import { useForm, type FieldError } from "react-hook-form";
-
+import type { ProductResponse } from "../../services/api";
+import { useToast } from "../../hooks/ToastContext";
 interface CheckoutProps {
   totalPrice: number;
   quantity: number;
+  products: { id: number; name: string; quantity: number }[];
   
 }
 
@@ -12,13 +14,33 @@ interface CheckoutFormData {
   email: string;
   contact: string;
   address: string;
+  products: { id: number; name: string; quantity: number }[];
 }
 
-const Checkout: React.FC<CheckoutProps> = ({ totalPrice, quantity}) => {
+
+
+const Checkout: React.FC<CheckoutProps> = ({ totalPrice, quantity,products}) => {
   const {
     register,
+    handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<CheckoutFormData>();
+  const toast=useToast();
+
+  const onSubmit = (data: CheckoutFormData) => {
+  const formDataWithProducts = {
+    ...data,
+    totalPrice:totalPrice,
+    totalQuantity:quantity,
+    products: products
+  };
+
+  console.log("Checkout data:", formDataWithProducts);
+  toast.success("Your Order was placed successfully!");
+  reset();
+
+};
 
   return (
     <div className="w-full p-6 border rounded shadow-md bg-white ">
@@ -33,7 +55,7 @@ const Checkout: React.FC<CheckoutProps> = ({ totalPrice, quantity}) => {
         <span>Rs. {totalPrice.toFixed(2)}</span>
       </div>
 
-      <form className="space-y-4">
+      <form className="space-y-4"onSubmit={handleSubmit(onSubmit)}>
        
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>

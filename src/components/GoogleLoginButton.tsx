@@ -26,7 +26,7 @@ const GoogleLoginButton: React.FC = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div>
       <GoogleLogin onSuccess={handleSuccess} onError={() => console.log("Login Failed")} />
     </div>
   );

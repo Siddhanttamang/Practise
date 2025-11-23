@@ -14,11 +14,11 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap:10px;
+  align-items:center;
+  gap:22px;
   flex-wrap: wrap;
 }
 .product-card {
-  width: 292px;
   border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;

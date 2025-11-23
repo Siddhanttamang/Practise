@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { fetchProduct, type ProductResponse } from '../services/api';
 import "../styles/marketplace.css";
-import CartButton from '../components/marketplace/CartButton';
-import SearchBar from '../components/marketplace/SearchBar';
+
 import { AuthContext } from '../contexts/AuthContext';
+import SearchBar from '../components/marketplace/SearchBar';
+import CartButton from '../components/marketplace/CartButton';
 
 export interface CartItem {
   id: number;

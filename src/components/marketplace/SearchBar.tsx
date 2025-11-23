@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { ProductResponse } from '../../services/api';
 
+
 interface SearchBarProps {
   allProducts: ProductResponse[] | null;
   setProductData: React.Dispatch<React.SetStateAction<ProductResponse[] | null>>;

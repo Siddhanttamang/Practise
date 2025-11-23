@@ -5,12 +5,11 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import MarketPlace from "./pages/MarketPlace";
 import Vegetables from "./pages/Vegetables";
-import Cart from "./components/marketplace/Cart";
-import Products from "./components/marketplace/ProductList";
-import ProductDetails from "./components/marketplace/ProductDetails";
-import Checkout from "./components/marketplace/Checkout";
-import SellVegetable from "./components/marketplace/SellVegetable";
 import ProtectedRoute from "./utilities/ProtectedRoute";
+import Products from "./components/marketplace/ProductList";
+import Cart from "./components/marketplace/Cart";
+import ProductDetails from "./components/marketplace/ProductDetails";
+import SellVegetable from "./components/marketplace/SellVegetable";
 
 function App() {
   const location = useLocation();
