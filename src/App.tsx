@@ -10,6 +10,7 @@ import Products from "./components/marketplace/ProductList";
 import Cart from "./components/marketplace/Cart";
 import ProductDetails from "./components/marketplace/ProductDetails";
 import SellVegetable from "./components/marketplace/SellVegetable";
+import Breadcrumb from "./components/common/BreadCrumb";
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
     <div className="app">
       {!hideNavbar && <Navbar />}
       <main className="main-content">
+        {!hideNavbar&& <Breadcrumb/>}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

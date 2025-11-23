@@ -49,7 +49,7 @@ const MarketPlace: React.FC = () => {
       }
     };
     fetchProductData();
-  }, []);
+  }, [setAllProducts,allProducts]);
 
   return (
     <div className='market-place flex flex-col gap-6'>

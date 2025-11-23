@@ -9,10 +9,10 @@ import Footer from '../components/Home/Footer';
 
 
 
+
 const Home: React.FC = () => {
   return (
     <div className="home-container">
-      
       <ImageSlider />
       <About/>
       <Services/>

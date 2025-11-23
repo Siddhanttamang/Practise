@@ -8,6 +8,7 @@ import Profile from './Profile';
 import Weather from './Weather';
 
 const Navbar = () => {
+  const location = useLocation();
   const auth=useContext(AuthContext);
   const city=(auth?.user)?(auth?.user?.address):"Kathmandu";
 
@@ -28,9 +29,15 @@ const Navbar = () => {
         }
       </div>
       <div className="navbar-links">
-        <Link to="/" className='nav-link'>Home</Link>
-        <Link to="/marketplace" className="nav-link">Market Place</Link>
-        <Link to="/vegetables" className="nav-link">Vegetables Prices</Link>
+        <Link to="/" className={`nav-link cursor-pointer  hover:border-green-400 transition-all duration-300 ease-linear   ${
+            location.pathname === "/" && " border-green-400 border-b-4"
+          }`}>Home</Link>
+        <Link to="/marketplace" className={`nav-link cursor-pointer hover:border-green-400 transition-all duration-300 ease-linear   ${
+            location.pathname === "/marketplace" && " border-green-400 border-b-4"
+          }`}>Market Place</Link>
+        <Link to="/vegetables" className={`nav-link cursor-pointer hover:border-green-400 transition-all duration-300 ease-linear  ${
+            location.pathname === "/vegetables" && " border-green-400 border-b-4"
+          }`}>Vegetables Prices</Link>
       </div>
       <div>
      <Profile/>
