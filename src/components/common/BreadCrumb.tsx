@@ -18,14 +18,12 @@ const Breadcrumb: React.FC = () => {
   return (
     <div className="bg-white p-2">
       <ul className="flex items-center gap-2 text-sm text-[#2E4053]">
-        {pathnames.length === 0 ? (
-          <li></li>
-        ) : (
-          <li>
-            <Link to="/" className="cursor-pointer hover:underline">
-              Home
-            </Link>
+        {pathnames.length === 0 && (
+          <li>Home
+
+            <img src={SlashImg} className="inline mx-2 w-2 h-2" alt="slash" />
           </li>
+        
         )}
 
         {pathnames.map((segment, index) => {
@@ -36,7 +34,7 @@ const Breadcrumb: React.FC = () => {
 
           return (
             <React.Fragment key={routeTo}>
-              <img src={SlashImg} className="w-2 h-2" alt="slash" />
+              
               {isLast ? (
                 <li>{name}</li>
               ) : (
@@ -46,6 +44,7 @@ const Breadcrumb: React.FC = () => {
                   </Link>
                 </li>
               )}
+              <img src={SlashImg} className="w-2 h-2" alt="slash" />
             </React.Fragment>
           );
         })}

@@ -11,6 +11,7 @@ import Cart from "./components/marketplace/Cart";
 import ProductDetails from "./components/marketplace/ProductDetails";
 import SellVegetable from "./components/marketplace/SellVegetable";
 import Breadcrumb from "./components/common/BreadCrumb";
+import Footer from "./components/common/Footer";
 
 function App() {
   const location = useLocation();
@@ -38,6 +39,7 @@ function App() {
         </Route>
       </Routes>
       </main>
+      {!hideNavbar&& <Footer/>}
     </div>
   );
 }

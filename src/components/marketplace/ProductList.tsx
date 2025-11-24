@@ -6,7 +6,6 @@ import ProductCard from "./ProductCard";
 import type { ProductResponse } from "../../services/api";
 import type { CartItem } from "../../pages/MarketPlace";
 
-
 interface MarketPlaceContext {
   productdata: ProductResponse[] | null;
   cartItems: CartItem[];
@@ -20,6 +19,7 @@ const Products: React.FC = () => {
     return <div>Loading products...</div>;
 
   return (
+    <>
     <div className="product-list ">
       {productdata.map(product => {
         const cartItem = cartItems.find(ci => ci.id === product.id);
@@ -35,6 +35,7 @@ const Products: React.FC = () => {
         );
       })}
     </div>
+    </>
   );
 };
 

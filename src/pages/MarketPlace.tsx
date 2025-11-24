@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { fetchProduct, type ProductResponse } from '../services/api';
 import "../styles/marketplace.css";
-
 import { AuthContext } from '../contexts/AuthContext';
 import SearchBar from '../components/marketplace/SearchBar';
 import CartButton from '../components/marketplace/CartButton';
+import ProductFilter from '../components/marketplace/ProductFilter';
 
 export interface CartItem {
   id: number;
@@ -19,6 +19,7 @@ const MarketPlace: React.FC = () => {
   const [allProducts, setAllProducts] = useState<ProductResponse[] | null>(null);
   const [productdata, setProductData] = useState<ProductResponse[] | null>(null);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
 
   const handleAddToCart = (id: number, quantity: number, price: number) => {
     setCartItems(prev => {
@@ -49,15 +50,17 @@ const MarketPlace: React.FC = () => {
       }
     };
     fetchProductData();
-  }, [setAllProducts,allProducts]);
-
+  }, []);
   return (
     <div className='market-place flex flex-col gap-6'>
       <SearchBar allProducts={allProducts} setProductData={setProductData} />
+      <ProductFilter 
+  allProducts={allProducts} 
+  setProductData={setProductData} 
+/>
 
       <nav className='nav-market'>
         <div>
-
         {(auth?.isLoggedIn) &&
           <Link to="/marketplace/addVegetable" className='nav-link'>
               <button className='login-button w-full p-2 pb-7 text-center'>Add Vegetables</button>

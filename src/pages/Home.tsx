@@ -5,7 +5,7 @@ import '../styles/home.css';
 import ImageSlider from '../components/Home/ImageSlider';
 import About from '../components/Home/About';
 import Services from '../components/Home/Services';
-import Footer from '../components/Home/Footer';
+import Footer from '../components/common/Footer';
 
 
 
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       <ImageSlider />
       <About/>
       <Services/>
-      <Footer/>
+      
 
     </div>
   );

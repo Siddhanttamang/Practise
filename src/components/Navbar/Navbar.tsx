@@ -6,6 +6,7 @@ import "../../styles/app.css";
 import logo from '../../assets/logo.png'
 import Profile from './Profile';
 import Weather from './Weather';
+import { Input } from '../ui/input';
 
 const Navbar = () => {
   const location = useLocation();
@@ -24,8 +25,7 @@ const Navbar = () => {
       </div>
       <div>
         {
-
-        <Weather city={city}/>
+        <Weather  city={city}/>
         }
       </div>
       <div className="navbar-links">
