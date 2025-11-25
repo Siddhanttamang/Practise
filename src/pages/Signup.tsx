@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import GoogleLoginButton from "../components/GoogleLoginButton";
 import { useToast } from "../hooks/ToastContext";
 import { loginUser, type LoginRequest } from "../services/api";
@@ -35,7 +35,6 @@ const Signup: React.FC = () => {
         const errorData = await response.json();
         throw new Error(errorData.message || "Signup failed");
       }
-
       toast.success("User Registered successfully")
       try {
             const request: LoginRequest = { email: data.email, password: data.password };
@@ -56,12 +55,12 @@ const Signup: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-center items-center ">
-      <h1 className="text-4xl font-extrabold text-black mb-8 drop-shadow-2xl">
+      <h1 className="text-4xl font-extrabold text-black mb-8 ">
         Register
       </h1>
 
       <form
-        className="bg-white text-gray-800 p-8 rounded-xl shadow-xl w-full max-w-lg flex flex-col gap-3"
+        className="bg-white text-gray-800 p-8  w-full max-w-lg flex flex-col gap-3"
         onSubmit={handleSubmit(onSubmit)}
       >
         {/* Username */}

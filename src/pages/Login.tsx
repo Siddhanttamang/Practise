@@ -38,10 +38,10 @@ const Login: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-center items-center   ">
-      <h1 className="text-4xl font-extrabold text-black mb-8 drop-shadow-2xl">Login</h1>
+      <h1 className="text-4xl font-extrabold text-black mb-8 ">Login</h1>
 
       <form 
-        className="bg-white text-gray-800 p-8 rounded-xl shadow-xl w-full max-w-sm flex flex-col gap-2"
+        className=" text-gray-800 p-8  w-full max-w-sm flex flex-col gap-2"
         onSubmit={handleSubmit(handleForm)}
       >
         {error && (

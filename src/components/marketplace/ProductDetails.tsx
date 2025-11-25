@@ -9,12 +9,13 @@ import AddToCart from '../common/AddToCart';
 interface MarketPlaceContext {
   cartItems: { id: number; quantity: number }[];
   handleAddToCart: (id: number, quantity: number) => void;
+  handleRemoveFromCart:(id:number)=>void;
 }
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { cartItems, handleAddToCart } = useOutletContext<MarketPlaceContext>();
+  const { cartItems, handleAddToCart,handleRemoveFromCart } = useOutletContext<MarketPlaceContext>();
 
   const [product, setProduct] = useState<ProductResponse | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
@@ -49,6 +50,7 @@ const ProductDetails: React.FC = () => {
 
   const isAddedToCart = cartItems.some(item => item.id === product.id);
   const onAddToCart = () => handleAddToCart(product.id, quantity);
+  const onRemoveFromCart=()=>handleRemoveFromCart(product.id);
 
   return (
     <div className="flex flex-col items-center p-6">
@@ -79,7 +81,7 @@ const ProductDetails: React.FC = () => {
             <button onClick={()=>setQuantity(prev=>prev+1)} className="bg-slate-300 px-2">+</button>
 
           
-          <AddToCart isAddedToCart={isAddedToCart} onAddToCart={onAddToCart} />
+          <AddToCart isAddedToCart={isAddedToCart} onAddToCart={onAddToCart} onRemoveFromCart={onRemoveFromCart} />
           </div>
         </div>
       </div>

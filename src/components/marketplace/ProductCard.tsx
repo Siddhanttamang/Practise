@@ -7,12 +7,14 @@ interface ProductCardProps {
   product: ProductResponse;
   isAddedToCart: boolean;
   onAddToCart: (qty: number) => void;
+  onRemoveFromCart:(id:number)=>void;
   initialQuantity?: number;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
   isAddedToCart,
+  onRemoveFromCart,
   onAddToCart,
   initialQuantity = 1,
 }) => {
@@ -30,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     navigate(`/marketplace/product/${product.id}`);
   };
 
-  const CartProduct = location.pathname.startsWith("/marketplace/cart");
+
 
   return (
     <div className="bg-white border h-92 border-gray-200 rounded-xl shadow-md overflow-hidden transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg w-72 sm:w-72">
@@ -67,12 +69,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
             +
           </button>
 
-        {!CartProduct && (
+        
           <AddToCart
           isAddedToCart={isAddedToCart}
           onAddToCart={() => onAddToCart(quantity)}
+          onRemoveFromCart={()=>onRemoveFromCart(product.id)}
           />
-        )}
+        
         </div>
       </div>
     </div>

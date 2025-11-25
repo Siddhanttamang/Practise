@@ -32,6 +32,9 @@ const MarketPlace: React.FC = () => {
       }
     });
   };
+  const handleRemoveFromCart = (id: number) => {
+  setCartItems(prev => prev.filter(item => item.id !== id));
+};
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -71,7 +74,7 @@ const MarketPlace: React.FC = () => {
       </nav>
 
       <Outlet 
-        context={{ productdata, setProductData, handleAddToCart, cartItems }} 
+        context={{ productdata, setProductData, handleAddToCart,handleRemoveFromCart, cartItems }} 
       />
     </div>
   );

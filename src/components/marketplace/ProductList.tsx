@@ -10,11 +10,12 @@ interface MarketPlaceContext {
   productdata: ProductResponse[] | null;
   cartItems: CartItem[];
   handleAddToCart: (id: number,quantity:number,price:number) => void;
+  handleRemoveFromCart:(id:number)=>void;
 }
 
 
 const Products: React.FC = () => {
-  const { productdata, cartItems, handleAddToCart} = useOutletContext<MarketPlaceContext>();
+  const { productdata, cartItems, handleAddToCart,handleRemoveFromCart} = useOutletContext<MarketPlaceContext>();
   if (!productdata || productdata.length === 0)
     return <div>Loading products...</div>;
 
@@ -29,6 +30,7 @@ const Products: React.FC = () => {
           key={product.id}
           product={product}
           isAddedToCart={!!cartItem}
+          onRemoveFromCart={()=>handleRemoveFromCart(product.id)}
           onAddToCart={(quantity) => handleAddToCart(product.id, quantity,product.price)}
         />
 

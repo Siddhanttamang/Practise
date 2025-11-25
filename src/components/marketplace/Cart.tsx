@@ -9,11 +9,11 @@ interface MarketPlaceContext {
   productdata: ProductResponse[] | null;
   cartItems: CartItem[];
   handleAddToCart: (id: number, quantity: number, price: number) => void;
+  handleRemoveFromCart:(id:number)=>void;
 }
 
 const Cart: React.FC = () => {
-  const { productdata, cartItems, handleAddToCart } =
-    useOutletContext<MarketPlaceContext>();
+  const { productdata, cartItems, handleAddToCart,handleRemoveFromCart } =useOutletContext<MarketPlaceContext>();
 
   if (!productdata || productdata.length === 0)
     return <div>Loading products...</div>;
@@ -35,7 +35,7 @@ const Cart: React.FC = () => {
     totalPrice: number;
   }[];
 
-  // Calculate grand total for all products
+
   const grandTotal = selectedProducts.reduce(
     (sum, item) => sum + item.totalPrice,
     0
@@ -51,6 +51,9 @@ const Cart: React.FC = () => {
             isAddedToCart={true}
             onAddToCart={(qty) =>
               handleAddToCart(product.id, qty, product.price)
+            }
+            onRemoveFromCart={()=>
+              handleRemoveFromCart(product.id)
             }
             initialQuantity={cartQuantity}
           />
