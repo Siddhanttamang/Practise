@@ -12,7 +12,6 @@ export interface CartItem {
   quantity: number;
   price: number;
 }
-
 const MarketPlace: React.FC = () => {
   const [error, setError] = useState<string>('');
   const auth= useContext(AuthContext);
@@ -25,12 +24,10 @@ const MarketPlace: React.FC = () => {
     setCartItems(prev => {
       const existing = prev.find(item => item.id === id);
       if (existing) {
-        // Update quantity
         return prev.map(item =>
           item.id === id ? { ...item, quantity } : item
         );
       } else {
-        // Add new item
         return [...prev, { id, quantity, price }];
       }
     });
@@ -41,8 +38,8 @@ const MarketPlace: React.FC = () => {
       try {
         const res = await fetchProduct();
         if (res) {
-          setAllProducts(res);     // store original
-          setProductData(res);     // initial UI list
+          setAllProducts(res);     
+          setProductData(res);     
           setError('');
         }
       } catch (err: any) {

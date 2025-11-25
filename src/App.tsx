@@ -1,46 +1,40 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/common/Layout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import MarketPlace from "./pages/MarketPlace";
 import Vegetables from "./pages/Vegetables";
-import ProtectedRoute from "./utilities/ProtectedRoute";
 import Products from "./components/marketplace/ProductList";
 import Cart from "./components/marketplace/Cart";
 import ProductDetails from "./components/marketplace/ProductDetails";
 import SellVegetable from "./components/marketplace/SellVegetable";
-import Breadcrumb from "./components/common/BreadCrumb";
-import Footer from "./components/common/Footer";
+import ProtectedRoute from "./utilities/ProtectedRoute";
+import AuthLayout from "./pages/AuthLayout";
 
 function App() {
-  const location = useLocation();
-  const hideNavbar = location.pathname === "/login";
-
   return (
-    
-    <div className="app">
-      {!hideNavbar && <Navbar />}
-      <main className="main-content">
-        {!hideNavbar&& <Breadcrumb/>}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/vegetables/*" element={<Vegetables/>} />
-        <Route path="/marketplace/*" element={<MarketPlace/>}>
+    <Routes> 
+       <Route path="/auth/:mode" element={<AuthLayout />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/vegetables/*" element={<Vegetables />} />
+        <Route path="/marketplace/*" element={<MarketPlace />}>
           <Route index element={<Products />} />
-           <Route path="cart" element={<Cart />}/>
+          <Route path="cart" element={<Cart />} />
           <Route path="product/:id" element={<ProductDetails />} />
-          <Route path="addVegetable" element={
-            <ProtectedRoute>
-              <SellVegetable />
-            </ProtectedRoute>
-            } />
+          <Route
+            path="addVegetable"
+            element={
+              <ProtectedRoute>
+                <SellVegetable />
+              </ProtectedRoute>
+            }
+          />
         </Route>
-      </Routes>
-      </main>
-      {!hideNavbar&& <Footer/>}
-    </div>
+      </Route>
+    </Routes>
   );
 }
 

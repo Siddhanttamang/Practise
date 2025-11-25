@@ -11,9 +11,11 @@ const Profile:React.FC = () => {
     <>
     
      {(!user)?(<div className="navbar-profile">
-            <Link to="/login" className='nav-link'>
+            <Link to="/auth/login" className='nav-link'>
             <button className='login-button'>Login</button></Link>
+            <Link to="/auth/signup" className='nav-link'>
             <button className='signup-button'>Sign Up</button>
+            </Link>
           </div>):(
     <div className="navbar-profile">
         <div className='profile'><img
